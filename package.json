@@ -5,6 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc",
+    "build-example": "cd example && rimraf ./dist && tsc",
+    "example": "npm run build-example && cd example/dist/example && electron Main.js",
     "test": "jest",
     "ts": "tsc --pretty --noEmit",
     "watch-ts": "npm run ts -- --watch"

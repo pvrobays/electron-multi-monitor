@@ -15,19 +15,15 @@
     "esModuleInterop": true,
     "outDir": "dist",
     "typeRoots": [
-      "./node_modules/@types",
-      "./src/types"
+      "../node_modules/@types",
+      "./types"
     ]
   },
   "include": [
     "./",
-    "./src/preload"
+    "../src/preload"
   ],
   "exclude": [
     "node_modules",
-    "out",
-    "obj",
-    "bin",
-    "example"
   ]
 }
