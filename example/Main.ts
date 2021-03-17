@@ -8,7 +8,10 @@ function onReady() {
 
     multiMonitor = MultiMonitor.instance;
     
-    multiMonitor.openUrl("https://google.com", 2).then(() => {
+    const url = "https://google.com";
+    // const url = "about:blank";
+    
+    multiMonitor.openUrl(url, 2).then(() => {
         console.log("Monitor windows are opened & loaded!");
     });
 }

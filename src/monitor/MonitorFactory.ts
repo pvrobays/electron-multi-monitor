@@ -1,17 +1,16 @@
 ﻿import { BrowserWindowConstructorOptions } from "electron";
 import path from "path";
 import { MainMonitor } from "./MainMonitor";
-import { Monitor } from "./Monitor";
 
 export interface IMonitorFactory {
-    createMain(numberOfOthersToOpen: number): Monitor;
+    createMain(numberOfOthersToOpen: number): MainMonitor;
 
     updateOptions(options: BrowserWindowConstructorOptions): void;
 }
 
 export class MonitorFactory implements IMonitorFactory {
 
-    createMain(numberOfOthersToOpen: number): Monitor {
+    createMain(numberOfOthersToOpen: number): MainMonitor {
         const rank = 0;
         const browserWindowOptions: BrowserWindowConstructorOptions = {
             // show: false,
@@ -27,6 +26,7 @@ export class MonitorFactory implements IMonitorFactory {
             backgroundColor: "#FFFFFF",
             title: `Multi Monitor #${ rank }`,
             webPreferences: {
+                contextIsolation: false, //TODO: find fix for window.opener? Create our own Html file?
                 nodeIntegration: false,
                 preload: path.join(__dirname, "../preload/Main.js"),
                 nativeWindowOpen: true,
@@ -43,7 +43,7 @@ export class MonitorFactory implements IMonitorFactory {
     updateOptions(options: BrowserWindowConstructorOptions) {
         if (!options.webPreferences)
             throw new Error("webPreferences of the new pop-up window are undefined");
-
+        
         options.webPreferences.preload = path.join(__dirname, './preload/Other.js');
         options.webPreferences.nativeWindowOpen = true;
         options.webPreferences.affinity = 'MULTI-MONITOR';
