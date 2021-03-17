@@ -16,14 +16,9 @@
     "suppressImplicitAnyIndexErrors": true,
     "target": "ESNext",
     "typeRoots": [
-      "../node_modules/@types",
-      "../src/types",
-      "./types"
+      "../../node_modules/@types"
     ]
   },
-  "exclude": [
-    "app"
-  ],
   "include": [
     "./"
   ]

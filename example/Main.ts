@@ -1,5 +1,7 @@
 ﻿import { app } from "electron";
-import { IMultiMonitor, MultiMonitor } from "../src/MultiMonitor";
+// import { IMultiMonitor, MultiMonitor } from "../src/MultiMonitor";
+// @ts-ignore
+import { IMultiMonitor, MultiMonitor } from "../../dist/MultiMonitor";
 
 let multiMonitor: IMultiMonitor | null = null;
 
@@ -8,8 +10,9 @@ function onReady() {
 
     multiMonitor = MultiMonitor.instance;
     
-    const url = "https://google.com";
+    // const url = "https://google.com";
     // const url = "about:blank";
+    const url = `file://${__dirname}/../app/index.html`;
     
     multiMonitor.openUrl(url, 2).then(() => {
         console.log("Monitor windows are opened & loaded!");
