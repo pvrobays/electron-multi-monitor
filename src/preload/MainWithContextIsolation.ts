@@ -2,6 +2,8 @@
 import { ElectronMultiMonitor } from "../browser/ElectronMultiMonitor";
 import { MainMonitor } from "../monitor/MainMonitor";
 
+//TODO Delete this file
+
 console.warn("Loading preload/Main.js...");
 
 const currentMonitor: MainMonitor = remote.getCurrentWindow() as MainMonitor;

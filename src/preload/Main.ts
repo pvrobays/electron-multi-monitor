@@ -1,6 +1,7 @@
 ﻿import { remote } from "electron";
 import { ElectronMultiMonitor } from "../browser/ElectronMultiMonitor";
 import { MainMonitor } from "../monitor/MainMonitor";
+// import { contextBridge } from "electron";
 
 console.warn("Loading preload/Main.js...");
 
@@ -29,6 +30,8 @@ else {
         throw new Error("This should be an 'other monitor' but there's no window.opener defined! Can't connect the multiple monitors!");
     
     const opener = window.opener as Window;
+    console.warn("window.opener", opener);
+    // contextBridge.exposeInMainWorld("customOpener", opener);
     const { electronMultiMonitor } = opener;
     if (!electronMultiMonitor)
         throw new Error("This should be an 'other monitor' but the window.opener has no 'electronMultiMonitor' object! Can't connect the multiple monitors!");
