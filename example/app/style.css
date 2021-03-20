@@ -1,0 +1,31 @@
+﻿body {
+}
+
+.header {
+    background: #f1f1f1;
+    color: #999;
+}
+
+.header .info {
+    float: right;
+    color: #AAA;
+    font-size: 0.8rem;
+    line-height: 34px;
+    padding-right: 5px;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #111;
+    color: #666;
+    text-align: center;
+    padding: 1em;
+    font-size: 80%;
+}
+
+.footer a, .footer a:visited {
+    color: #666;
+}

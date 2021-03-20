@@ -1,22 +1,21 @@
 ﻿import * as React from "react";
-import ReactDOM from "react-dom";
-import { MonitorComponent } from "./MonitorComponent";
+import { IApp } from "./App";
+import { Provider } from "mobx-react"
+import { MonitorsComponent } from "./components/MonitorsComponent";
 
-export class AppComponent extends React.Component {
+export interface IAppComponentProps {
+    app: IApp;
+}
+
+export class AppComponent extends React.Component<IAppComponentProps> {
 
     render() {
-        const { otherMonitors, mainWindow, numberOfMonitors } = window.electronMultiMonitor;
-        
-        return <>
-            <MonitorComponent rank={ 1 } currentWindow={ mainWindow } numberOfMonitors={ numberOfMonitors } key={ 0 } />
-            {
-                otherMonitors.map((value, index) => 
-                    ReactDOM.createPortal(
-                        <MonitorComponent rank={ index + 2} key={ index + 1} numberOfMonitors={ numberOfMonitors } currentWindow={ value.window } />,
-                        value.htmlRoot
-                    )
-                )
-            }
-        </>;
+        const { app } = this.props;
+        //If you want, here you can write code that should only happen on the main window.
+
+        //Once you're done, call the <MonitorsComponent /> which will render the UI for all the monitors
+        return <Provider { ...app.stores }>
+            <MonitorsComponent/>
+        </Provider>;
     }
 }

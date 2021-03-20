@@ -19,8 +19,9 @@ if (typeof(numberOfOthersToOpen) !== "undefined") {
     // contextBridge.exposeInMainWorld("electronMultiMonitor", electronMultiMonitor);
     window.electronMultiMonitor = electronMultiMonitor;
     
+    const { href } = window.location;
     for (let i = 0; i < numberOfOthersToOpen; i++) {
-        window.open("about:blank", `MM-other-${i}`);
+        window.open(href, `MM-other-${i}`);
     }
 }
 else {
