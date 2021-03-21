@@ -14,8 +14,8 @@ export class MonitorFactory implements IMonitorFactory {
         const rank = 0;
         const browserWindowOptions: BrowserWindowConstructorOptions = {
             // show: false,
-            // x: 0,
-            // y: 0,
+            x: 0,
+            y: 0, //TODO: make the webapp itself change the bounds of the window
             width: 1280,
             height: 1024,
             minWidth: 600,

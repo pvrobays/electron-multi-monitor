@@ -23,11 +23,13 @@ export class PicturesListPictureComponent extends React.Component<IPicturesListP
         const { pictureId, picturesStore } = this.props;
         const { selectedPictureId } = picturesStore!;
 
-        return <div className={ `pure-u-1-5 ${ selectedPictureId === pictureId ? "selected" : "" }` }
+        return <div className={ `pure-u-1-5 picture-container ${ selectedPictureId === pictureId ? "selected" : "" }` }
                     key={ pictureId }
                     onClick={ () => this.select(pictureId) }>
-            <p>{ pictureId }</p>
-            <img src={ `https://picsum.photos/seed/${ pictureId }/200/300` } alt={ pictureId }/>
+            <h3 className="picture-title">{ pictureId }</h3>
+            <div  className="pure-img picture-placeholder">
+                <img src={ `https://picsum.photos/seed/${ pictureId }/300/300` } alt={ pictureId } className="pure-img" />
+            </div>
         </div>
     }
 }

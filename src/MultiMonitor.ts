@@ -68,7 +68,7 @@ export class MultiMonitor implements IMultiMonitor {
             return;
         }
         
-        const { monitorFactory } = this;
+        const { monitorFactory, _mainMonitor } = this;
 
         monitorFactory.updateOptions(options);
 
@@ -89,6 +89,25 @@ export class MultiMonitor implements IMultiMonitor {
             
             //TODO set bounds etc.
             browserWindow.setSize(1280, 1024);
+            browserWindow.setPosition(1280, 0);
+        });
+
+
+        let domLoaded = false;
+        // @ts-ignore TODO: check to solve this typing issue
+        options.webContents.on('dom-ready', (event: Event) => {
+            domLoaded = true;
+        });
+
+        // @ts-ignore TODO: check to solve this typing issue
+        options.webContents.on('will-navigate', (e, url) => {
+            if (!_mainMonitor) return;
+            if (_mainMonitor.webContents.getURL() === url && !domLoaded)
+                return; //only pass the same url to the mainMonitor when the dom was already loaded
+            console.info('Other window received url navigation which it will send to the main window:', url);
+            e.preventDefault();
+            domLoaded = false;
+            _mainMonitor.loadURL(url);
         });
     }
     
