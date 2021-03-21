@@ -41,7 +41,7 @@ export class MultiMonitor implements IMultiMonitor {
         this._mainMonitor = monitorFactory.createMain(numberOfMonitors - 1);
         this.monitors.push(this._mainMonitor);
 
-        this._mainMonitor.webContents.openDevTools(); //TODO remove
+        // this._mainMonitor.webContents.openDevTools();
 
         //TODO: refactor to use webContents.setWindowOpenHandler
         this._mainMonitor.webContents.on('new-window', this.onNewWindow);
@@ -85,7 +85,7 @@ export class MultiMonitor implements IMultiMonitor {
             
             this.addOtherMonitor(browserWindow);
             
-            browserWindow.webContents.openDevTools(); //TODO: remove
+            // browserWindow.webContents.openDevTools();
             
             //TODO set bounds etc.
             browserWindow.setSize(1280, 1024);
