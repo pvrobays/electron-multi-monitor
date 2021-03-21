@@ -3,6 +3,8 @@
 // @ts-ignore
 import { IMultiMonitor, MultiMonitor } from "../../dist/MultiMonitor";
 
+const numberOfWindowsToOpen = 2;
+
 let multiMonitor: IMultiMonitor | null = null;
 
 function onReady() {
@@ -14,7 +16,7 @@ function onReady() {
     // const url = "about:blank";
     const url = `file://${__dirname}/../app/index.html`;
     
-    multiMonitor.openUrl(url, 2).then(() => {
+    multiMonitor.openUrl(url, numberOfWindowsToOpen).then(() => {
         console.log("Monitor windows are opened & loaded!");
     });
 }
