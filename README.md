@@ -5,6 +5,8 @@
 This package provides web developers with the ability to create applications which cover multiple browser windows via [Electron](https://electronjs.org/).
 It removes the restriction for web developers to only have a single window to develop their product in.
 
+The library will create linked JavaScript `window` objects for you. Meaning you only need to worry about one window object. No need for special communication between the different windows; just pure JavaScript!
+
 To see the library in action, clone the repository and run the example:
 
     $ git clone https://github.com/pvrobays/electron-multi-monitor.git
