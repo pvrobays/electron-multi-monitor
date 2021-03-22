@@ -33,9 +33,17 @@ First step is to create a MultiMonitor instance inside your [Electron](https://e
 ```
 const multiMonitor = MultiMonitor.instance;
 ```
-2. Create your own, via the MultiMonitorFactory
+2. or, Create your own via the MultiMonitorFactory
 ```
 const multiMonitor = new MultiMonitorFactory().create();
+```
+The `multiMonitor` object can be used to adapt, move, interact with the opened windows within your Main process:
+```
+interface IMultiMonitor {
+    readonly monitors: BrowserWindow[];
+    openUrl(url: string, numberOfMonitors: number): Promise<void>;
+    destroyAllMonitors(): void;
+}
 ```
 
 Now you can open your multi-monitor page via the MultiMonitor instance:
@@ -47,7 +55,7 @@ multiMonitor.openUrl(url, numberOfWindowsToOpen)
 ```
 
 This will open your url inside the number of windows you've defined.
-Now you'll have the object `window.electronMultiMonitor` available:
+Now you'll have the object `window.electronMultiMonitor` available in your render process:
 
 ```
 interface IElectronMultiMonitor {
