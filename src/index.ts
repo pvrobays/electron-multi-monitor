@@ -1,2 +1,2 @@
-﻿export * from "./MultiMonitor";
-export * from "./MultiMonitorFactory"
+﻿export { IMultiMonitor, MultiMonitor } from "./MultiMonitor";
+export { MultiMonitorFactory } from "./MultiMonitorFactory";
