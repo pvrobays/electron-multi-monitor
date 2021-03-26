@@ -26,10 +26,20 @@ Overkill. But possible.
 ## Getting Started
 You can always check out the code from the demo, found in the `example` folder.
 
-### Create a MultiMonitor instance
-First step is to create a MultiMonitor instance inside your [Electron](https://electronjs.org/) app:
+### 1. Installation & Import
+Easiest way to install it is via [npm](https://www.npmjs.com/get-npm):
+```
+npm install electron-multi-monitor
+```
+Next you'll be able to import the MultiMonitor object inside your [Electron](https://electronjs.org/) app:
+```
+import { MultiMonitor } from "electron-multi-monitor";
+```
 
-1. The default instance
+### 2. Create a MultiMonitor instance
+There are 2 ways of creating  MultiMonitor instance:
+
+1. Use the default instance
 ```
 const multiMonitor = MultiMonitor.instance;
 ```
@@ -46,6 +56,7 @@ interface IMultiMonitor {
 }
 ```
 
+### 3. Launch multiple monitors
 Now you can open your multi-monitor page via the MultiMonitor instance:
 ```
 multiMonitor.openUrl(url, numberOfWindowsToOpen)
