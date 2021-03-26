@@ -1,6 +1,6 @@
 ﻿import { app } from "electron";
 // @ts-ignore
-import { IMultiMonitor, MultiMonitor } from "../../";
+import { IMultiMonitor, MultiMonitor } from "../../dist"; //import { IMultiMonitor, MultiMonitor } from "electron-multi-monitor"; //when using via npm
 
 const numberOfWindowsToOpen = 2;
 
