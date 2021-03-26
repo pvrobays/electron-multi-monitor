@@ -4,13 +4,13 @@
   "description": "Create multi monitor applications using web development",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rimraf ./dist && tsc",
-    "build-example-app": "cd example/app && webpack-cli --config=webpack.config.js --mode=development",
+    "build": "rimraf ./dist && tsc && rollup -c",
     "build-example": "cd example && rimraf ./dist && tsc",
+    "build-example-app": "cd example/app && webpack-cli --config=webpack.config.js --mode=development",
     "example": "npm run build && npm run build-example && npm run build-example-app && electron example/dist/Main.js",
+    "prepublishOnly": "npm run test && npm run build && npm run build-example && npm run build-example-app",
     "test": "jest",
-    "ts": "tsc --pretty --noEmit",
-    "watch-ts": "npm run ts -- --watch"
+    "ts": "tsc --pretty --noEmit"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,10 @@
     "url": "https://github.com/pvrobays/electron-multi-monitor/issues"
   },
   "homepage": "https://github.com/pvrobays/electron-multi-monitor#readme",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "devDependencies": {
     "@types/jest": "^26.0.21",
     "@types/node": "^14.14.35",
@@ -45,13 +49,12 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
+    "rollup": "^2.42.4",
+    "rollup-plugin-dts": "^3.0.1",
     "ts-jest": "^26.5.3",
     "ts-loader": "^8.0.18",
     "typescript": "^4.2.3",
     "webpack": "^5.26.3",
     "webpack-cli": "^4.5.0"
-  },
-  "dependencies": {
-    "electron-preferences": "^2.2.0"
   }
 }
