@@ -35,6 +35,7 @@ Next you'll be able to import the MultiMonitor object inside your [Electron](htt
 ```
 import { MultiMonitor } from "electron-multi-monitor";
 ```
+P.s. If you're new to electron, [Electron Forge](https://www.electronforge.io/) is a great starting point. They even have a [guide](https://www.electronforge.io/guides/framework-integration/react-with-typescript) on how to enable TypeScript & React.
 
 ### 2. Create a MultiMonitor instance
 There are 2 ways of creating  MultiMonitor instance:
