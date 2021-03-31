@@ -28,11 +28,11 @@ You can always check out the code from the demo, found in the `example` folder.
 
 ### 1. Installation & Import
 Easiest way to install it is via [npm](https://www.npmjs.com/get-npm):
-```
+```bash
 npm install electron-multi-monitor
 ```
 Next you'll be able to import the MultiMonitor object inside your [Electron](https://electronjs.org/) app:
-```
+```ts
 import { MultiMonitor } from "electron-multi-monitor";
 ```
 P.s. If you're new to electron, [Electron Forge](https://www.electronforge.io/) is a great starting point. They even have a [guide](https://www.electronforge.io/guides/framework-integration/react-with-typescript) on how to enable TypeScript & React.
@@ -41,15 +41,15 @@ P.s. If you're new to electron, [Electron Forge](https://www.electronforge.io/) 
 There are 2 ways of creating  MultiMonitor instance:
 
 1. Use the default instance
-```
+```ts
 const multiMonitor = MultiMonitor.instance;
 ```
 2. or, Create your own via the MultiMonitorFactory
-```
+```ts
 const multiMonitor = new MultiMonitorFactory().create();
 ```
 The `multiMonitor` object can be used to adapt, move, interact with the opened windows within your Main process:
-```
+```ts
 interface IMultiMonitor {
     readonly monitors: BrowserWindow[];
     openUrl(url: string, numberOfMonitors: number): Promise<void>;
@@ -59,7 +59,7 @@ interface IMultiMonitor {
 
 ### 3. Launch multiple monitors
 Now you can open your multi-monitor page via the MultiMonitor instance:
-```
+```ts
 multiMonitor.openUrl(url, numberOfWindowsToOpen)
 .then(() => {
     console.log("Monitor windows are opened have your URL loaded!");
@@ -69,7 +69,7 @@ multiMonitor.openUrl(url, numberOfWindowsToOpen)
 This will open your url inside the number of windows you've defined.
 Now you'll have the object `window.electronMultiMonitor` available in your render process:
 
-```
+```ts
 interface IElectronMultiMonitor {
     readonly mainWindow: Window;
     readonly otherMonitors: IOtherMonitor[];
