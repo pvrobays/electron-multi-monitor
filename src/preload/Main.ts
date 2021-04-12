@@ -8,6 +8,7 @@ console.warn("Loading preload/Main.js...");
 const currentMonitor: MainMonitor = remote.getCurrentWindow() as MainMonitor;
 // contextBridge.exposeInMainWorld("currentMonitor", currentMonitor);
 window.currentMonitor = currentMonitor;
+window.multiMonitor = currentMonitor?.multiMonitor;
 
 const { numberOfOthersToOpen } = currentMonitor;
 

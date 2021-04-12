@@ -1,6 +1,7 @@
 ﻿
 interface Window {
-    currentMonitor?: any; //TODO: create better declaration; or remove?
+    currentMonitor?: any; //TODO: create type
+    multiMonitor?: any; //TODO create type
     electronMultiMonitor?: IElectronMultiMonitor;
     mainWindow?: Window;
 }

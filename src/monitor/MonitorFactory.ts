@@ -1,16 +1,17 @@
 ﻿import { BrowserWindowConstructorOptions } from "electron";
 import path from "path";
+import { IMultiMonitor } from "../MultiMonitor";
 import { MainMonitor } from "./MainMonitor";
 
 export interface IMonitorFactory {
-    createMain(numberOfOthersToOpen: number): MainMonitor;
+    createMain(multiMonitor: IMultiMonitor, numberOfOthersToOpen: number): MainMonitor;
 
     updateOptions(options: BrowserWindowConstructorOptions): void;
 }
 
 export class MonitorFactory implements IMonitorFactory {
 
-    createMain(numberOfOthersToOpen: number): MainMonitor {
+    createMain(multiMonitor: IMultiMonitor, numberOfOthersToOpen: number): MainMonitor {
         const rank = 0;
         const browserWindowOptions: BrowserWindowConstructorOptions = {
             // show: false,
@@ -35,7 +36,7 @@ export class MonitorFactory implements IMonitorFactory {
             }
         };
 
-        const monitor = new MainMonitor(numberOfOthersToOpen, browserWindowOptions);
+        const monitor = new MainMonitor(multiMonitor, numberOfOthersToOpen, browserWindowOptions);
 
         return monitor;
     }

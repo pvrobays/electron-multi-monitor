@@ -13,14 +13,21 @@ export class ElectronMultiMonitor implements IElectronMultiMonitor {
     
     public onReady?: (electronMultiMonitor: IElectronMultiMonitor) => void;
     
+    private _numberOfMonitors: number;
+    
     constructor(
         public readonly mainWindow: Window,
-        public readonly numberOfMonitors: number
+        numberOfMonitors: number
     ) {
         this.otherMonitors = [];
+        this._numberOfMonitors = numberOfMonitors;
         
         if (numberOfMonitors === 1)
             this.triggerOnReady();
+    }
+    
+    get numberOfMonitors(): number {
+        return this._numberOfMonitors;
     }
 
     registerOtherMonitor(window: Window): Window {
@@ -34,6 +41,23 @@ export class ElectronMultiMonitor implements IElectronMultiMonitor {
         }
         
         return this.mainWindow;
+    }
+
+    /**
+     * inner call.
+     * Used to open a window with a certain ID, when the MultiMonitor instance requests so.
+     * @param id
+     */
+    _addMonitor(id: string): boolean {
+        console.log(`_addMonitor '${id}'`);
+        const { mainWindow } = this;
+        
+        this._numberOfMonitors++;
+        mainWindow.open(mainWindow.location.href, `MM-other-${id}`);
+
+        console.log(`_addMonitor opened '${id}'`);
+        
+        return true;
     }
 
     private triggerOnReady() {
