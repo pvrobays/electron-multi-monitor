@@ -12,3 +12,7 @@ export class MainMonitor extends Monitor {
         this.numberOfOthersToOpen = numberOfOthersToOpen;
     }
 }
+
+export function isMainMonitor(monitor: Monitor): monitor is MainMonitor {
+    return monitor.isMain;
+}

@@ -1,4 +1,5 @@
-﻿import { remote } from "electron";
+﻿/*
+import { remote } from "electron";
 import { ElectronMultiMonitor } from "../browser/ElectronMultiMonitor";
 import { MainMonitor } from "../monitor/MainMonitor";
 // import { contextBridge } from "electron";
@@ -42,4 +43,4 @@ else {
     window.mainWindow = mainWindow;
 }
 
-console.warn("Loaded preload/Main.js...");
+console.warn("Loaded preload/Main.js...");*/

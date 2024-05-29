@@ -26,12 +26,12 @@ export class MonitorFactory implements IMonitorFactory {
             backgroundColor: "#FFFFFF",
             title: `Multi Monitor #${ rank }`,
             webPreferences: {
-                contextIsolation: false, //TODO: find fix for window.opener? Create our own Html file?
+                // contextIsolation: false, //TODO PJ: find fix for window.opener? Create our own Html file?
                 nodeIntegration: false,
-                preload: path.join(__dirname, "../preload/Main.js"),
-                nativeWindowOpen: true,
-                affinity: "MULTI-MONITOR",
-                enableRemoteModule: true //TODO: try to remove this by using IPC calls
+                preload: path.join(__dirname, "../preload/PreloadMain.js"),
+                // nativeWindowOpen: true, //TODO PJ: remove?
+                // affinity: "MULTI-MONITOR", //TODO PJ: remove?
+                // enableRemoteModule: true //TODO PJ: try to remove this by using IPC calls
             }
         };
 
@@ -44,10 +44,10 @@ export class MonitorFactory implements IMonitorFactory {
         if (!options.webPreferences)
             throw new Error("webPreferences of the new pop-up window are undefined");
         
-        options.webPreferences.preload = path.join(__dirname, './preload/Other.js');
-        options.webPreferences.nativeWindowOpen = true;
-        options.webPreferences.affinity = 'MULTI-MONITOR';
+        options.webPreferences.preload = path.join(__dirname, './preload/PreloadOther.js');
+        // options.webPreferences.nativeWindowOpen = true; //TODO PJ: remove?
+        // options.webPreferences.affinity = 'MULTI-MONITOR'; //TODO PJ: remove?
         options.webPreferences.nodeIntegration = false;
-        options.webPreferences.enableRemoteModule = true; //TODO: try to remove this by using IPC calls
+        // options.webPreferences.enableRemoteModule = true; //TODO PJ: try to remove this by using IPC calls
     }
 }

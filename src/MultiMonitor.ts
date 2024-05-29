@@ -1,7 +1,6 @@
-﻿import { BrowserWindow, BrowserWindowConstructorOptions, Event, Referrer } from "electron";
-import { MainMonitor } from "./monitor/MainMonitor";
-import { IMonitorFactory } from "./monitor/MonitorFactory";
-import { MultiMonitorFactory } from "./MultiMonitorFactory";
+﻿import {BrowserWindow, BrowserWindowConstructorOptions, Event, Referrer} from "electron";
+import {MainMonitor} from "./monitor/MainMonitor";
+import {IMonitorFactory} from "./monitor/MonitorFactory";
 
 
 export interface IMultiMonitor {
@@ -12,13 +11,11 @@ export interface IMultiMonitor {
 }
 
 export class MultiMonitor implements IMultiMonitor {
-    public static instance: IMultiMonitor = new MultiMonitorFactory().create();
-    
     private _mainMonitor: MainMonitor | null;
     private _otherMonitors: BrowserWindow[];
     
     constructor(
-        private readonly monitorFactory: IMonitorFactory
+        private readonly monitorFactory: IMonitorFactory,
     ) {
         this._otherMonitors = [];
         this._mainMonitor = null;
@@ -41,10 +38,10 @@ export class MultiMonitor implements IMultiMonitor {
         this._mainMonitor = monitorFactory.createMain(numberOfMonitors - 1);
         this.monitors.push(this._mainMonitor);
 
-        // this._mainMonitor.webContents.openDevTools();
+        this._mainMonitor.webContents.openDevTools(); //TODO PJ: Comment
 
-        //TODO: refactor to use webContents.setWindowOpenHandler
-        this._mainMonitor.webContents.on('new-window', this.onNewWindow);
+        //TODO PJ: refactor to use webContents.setWindowOpenHandler
+        // this._mainMonitor.webContents.on('new-window', this.onNewWindow);
 
         await this._mainMonitor.loadURL(url);
     }
