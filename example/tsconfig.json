@@ -5,8 +5,7 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "NodeNext",
     "noImplicitAny": false,
     "outDir": "dist",
     "removeComments": false,
@@ -24,6 +23,7 @@
     "app"
   ],
   "include": [
-    "./"
+    "./",
+    "../src"
   ]
 }
