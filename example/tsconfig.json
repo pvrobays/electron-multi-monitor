@@ -5,15 +5,13 @@
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "NodeNext",
     "noImplicitAny": false,
     "outDir": "dist",
     "removeComments": false,
     "skipLibCheck": true,
     "sourceMap": false,
     "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
     "target": "ESNext",
     "typeRoots": [
       "../node_modules/@types",
@@ -25,6 +23,7 @@
     "app"
   ],
   "include": [
-    "./"
+    "./",
+    "../src"
   ]
 }
