@@ -1,4 +1,4 @@
-﻿import React from "react";
+﻿import React, {PropsWithChildren} from "react";
 
 export interface ILayoutComponentProps {
     rank: number;
@@ -8,7 +8,7 @@ export interface ILayoutComponentProps {
 /**
  * General Layout component which will be shown on each monitor
  */
-export class LayoutComponent extends React.Component<ILayoutComponentProps> {
+export class LayoutComponent extends React.Component<PropsWithChildren<ILayoutComponentProps>> {
     
     render() {
         const { children, rank, numberOfMonitors } = this.props;
